@@ -87,6 +87,9 @@ reduced_dt <- merged_dt[c('subject_id','activity_id',core_measurement_columns)]
 print('Matching activities from activity labels data table and using those instead of indices in reduced data table')
 reduced_dt <- merge(reduced_dt,activity_labels_dt,by.x = "activity_id", by.y = "activity_id")
 
+#     Remove the now redundant activity_id column
+reduced_dt <- within(reduced_dt,rm(activity_id))
+
 # We now have blended the data sets together, and added the descriptive columns
 
 # 5.  Fifth criterion: "From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject."
